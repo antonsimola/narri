@@ -32,7 +32,6 @@ public class AudioController : MonoBehaviour
         {
             InitializeSound(sound);
         }
-        Play("e3");
     }
 
     public void InitializeSound(Sound sound)

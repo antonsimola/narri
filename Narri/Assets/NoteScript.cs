@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class NoteScript : Collidable
 {
     public float speed = 1;
+
+    public NoteData NoteData;
     // Start is called before the first frame update
     override protected void Start()
     {
@@ -16,32 +19,20 @@ public class NoteScript : Collidable
     override protected void Update()
     {
         base.Update();
-        if (Input.GetKey(KeyCode.L))
-        {
-            Debug.Log("Holding L");
-        }
-
         transform.Translate(Vector3.left * speed  * Time.deltaTime);
     }
 
     protected override void OnCollide(Collider2D coll)
     {
         base.OnCollide(coll);
-        Debug.Log("collide");
         if (Input.GetKey(KeyCode.L))
         {
             Debug.Log("playing");
-            if (AudioController.instance.IsPlaying("e3"))
+            if (!AudioController.instance.IsPlaying(NoteData.Note))
             {
-                AudioController.instance.Play("e3");
+                AudioController.instance.Play(NoteData.Note);
             }
             
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        Debug.Log("Hello");
-    }
-    
 }
