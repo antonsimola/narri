@@ -220,13 +220,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 123583968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NoteMiniGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &123583968
 Transform:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 969539957}
   - component: {fileID: 969539959}
   - component: {fileID: 969539958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,7 +409,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -7318,7 +7318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1647238657}
   - component: {fileID: 1647238658}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NoteSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7352,8 +7352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466cf73e1a1a2ce40a59ca0f16683036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NotePrefab: {fileID: 4714104889423896752, guid: fb48ae78cea13ab4f9e0ba07a794fde4,
-    type: 3}
+  NotePrefab: {fileID: 4714104889423896752, guid: fb48ae78cea13ab4f9e0ba07a794fde4, type: 3}
 --- !u!1 &1669589635
 GameObject:
   m_ObjectHideFlags: 0
@@ -7365,7 +7364,7 @@ GameObject:
   - component: {fileID: 1669589636}
   - component: {fileID: 1669589637}
   - component: {fileID: 1669589638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7427,9 +7426,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
-    type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.8037735, g: 0.010615835, b: 0.010615835, a: 1}
   m_FlipX: 0
   m_FlipY: 0
