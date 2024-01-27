@@ -31,6 +31,7 @@ namespace DefaultNamespace
         private List<WordScript> completedWords = new List<WordScript>();
         private List<WordScript> failedWords = new List<WordScript>();
         private int jokeIndex;
+        private bool started;
 
         void Awake()
         {
@@ -46,14 +47,14 @@ namespace DefaultNamespace
 
         public void Start()
         {
-            var r = new Random(1);
-            jokeIndex = r.NextInt(0, Jokes.JokeList.Count);
+            var r = GameController.instance.Random;
+            jokeIndex = r.Next(0, Jokes.JokeList.Count);
             var joke = Jokes.JokeList[jokeIndex];
             var words = joke.Split(" ");
             var j = 0;
             foreach (var word in words)
             {
-                var y = r.NextInt(0, 5);
+                var y = r.Next(0, 5);
                 var cleanedWord = Regex.Replace(word, "[^A-Za-z0-9äö]", "").ToLowerInvariant();
                 Words.Enqueue(cleanedWord);
 
@@ -61,6 +62,8 @@ namespace DefaultNamespace
             }
 
             UpdateFullJoke();
+            started = true;
+            Debug.Log("started");
         }
 
         private IEnumerator QueueWord(float speed, string word, int y, int j)
@@ -72,8 +75,20 @@ namespace DefaultNamespace
             WordObjs.Enqueue(wordObj);
         }
 
+        public void EndMiniGame()
+        {
+            GameController.instance.EndMiniGame();
+        }
+
         void Update()
         {
+            if (!started) return;
+            if (Words.Count == 0)
+            {
+                EndMiniGame();
+                return;
+            }
+
             if (Input.anyKeyDown)
             {
                 KeyCode typedKey = KeyCode.Mouse6;
@@ -118,14 +133,14 @@ namespace DefaultNamespace
                         break;
                     }
                 }
-
-                UpdateWord();
-                Debug.Log(CurrentString);
             }
+
+            UpdateWord();
         }
 
         private void UpdateWord()
         {
+            if (WordObjs.Count == 0) return;
             var words = WordObjs.Peek();
             words._cleanWord = CurrentString;
             words.SetWord(ConstructStyle());
@@ -188,15 +203,21 @@ namespace DefaultNamespace
             }
 
             CurrentString = "";
-            UpdateWord();
+            if (Words.Count != 0)
+            {
+                UpdateWord();    
+            }
+            else
+            {
+                EndMiniGame();
+            }
+            
         }
 
         public void OnWordHitWall(WordScript wordObj, GameObject o)
         {
             if (failedWords.Contains(wordObj))
             {
-                //Destroy(o);
-                //TODO spawn random word
                 Debug.Log("Failed word " + wordObj._cleanWord);
             }
             else if (completedWords.Contains(wordObj))

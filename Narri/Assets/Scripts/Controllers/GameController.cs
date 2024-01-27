@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] public GameObject NoteMiniGame;
     [SerializeField] public GameObject JokeMiniGame;
 
-    public Random Random = new Random(1);
+    public Random Random = new Random((int)DateTime.Now.Ticks % 10000000);
 
     public static int YOffset = -3;
 
@@ -155,5 +155,11 @@ public class GameController : MonoBehaviour
     {
         OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
 
+    }
+
+    public void EndMiniGame()
+    {
+        
+        Debug.Log("End mini game");
     }
 }
