@@ -10,13 +10,13 @@ public class PlayLineScript : Collidable
     [SerializeField] private TMP_Text NoteText;
     public int Key; // 0,1,2,3,4
 
-    public bool IsColliding { get; set; }
+    public bool IsColliding;
+    public NoteScript CollidingNote = null;
 
     // Start is called before the first frame update
     void Start()
     {
            base.Start();
-           
            
     }
 
@@ -26,21 +26,29 @@ public class PlayLineScript : Collidable
         base.Update();
     }
 
-    protected override void OnCollide(Collider2D coll)
+    public void OnTriggerStay2D(Collider2D coll)
     {
-        base.OnCollide(coll);
         IsColliding = true;
+        this.CollidingNote = coll.gameObject.GetComponent<NoteScript>();
+        Debug.Log("Is collide " + CollidingNote.NoteData);
     }
 
-    protected override void NoCollisions()
+    public void OnTriggerExit2D(Collider2D other)
     {
-        base.NoCollisions();
         IsColliding = false;
+        CollidingNote = null;
     }
+    
 
 
     public void SetText(string key)
     {
         NoteText.text = key;
+    }
+
+    public void SetKey(int key)
+    {
+        Key = key;
+        GameController.instance.PlayLineSegments[key] = this;
     }
 }

@@ -11,7 +11,7 @@ public class NoteScript : Collidable
 
 
 
-    private bool notePlayed = false;
+    public bool notePlayed = false;
     public NoteData NoteData;
     // Start is called before the first frame update
     override protected void Start()
@@ -28,29 +28,31 @@ public class NoteScript : Collidable
 
     public void OnTriggerStay2D(Collider2D coll)
     {
-        if (GameController.instance.currentlyPressing == null || notePlayed)
-        {
-            return; // dont play sound if nothing is pressed
-        }
-
-        notePlayed = true;
-        if (GameController.instance.currentlyPressing == NoteData.Key)
-        {
-            if (!AudioController.instance.IsPlaying(NoteData.Note))
-            {
-                AudioController.instance.Play(NoteData.Note);
-                Destroy(gameObject);
-            }
-        }
-        else
-        {
-            // Play "wrong sound"
-            if (!AudioController.instance.IsPlaying("boo_short_1"))
-            {
-                AudioController.instance.Play("boo_short_1");
-                GameController.instance.FailNote();
-            }
-        }
+        // if (GameController.instance.currentlyPressing == null || notePlayed)
+        // {
+        //     return; // dont play sound if nothing is pressed
+        // }
+        //
+        // notePlayed = true;
+        // if (GameController.instance.currentlyPressing == NoteData.Key)
+        // {
+        //     if (!AudioController.instance.IsPlaying(NoteData.Note))
+        //     {
+        //         AudioController.instance.Play(NoteData.Note);
+        //         Destroy(gameObject);
+        //     }
+        // }
+        // else
+        // {
+            // // Play "wrong sound"
+            // if (!AudioController.instance.IsPlaying("boo_short_1"))
+            // {
+            //     AudioController.instance.Play("boo_short_1");
+            //     GameController.instance.FailNote();
+            // }
+            
+            //Handle in game controller
+        // }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -62,8 +64,12 @@ public class NoteScript : Collidable
             AudioController.instance.Play("boo_short_1");
             GameController.instance.FailNote();
         }
-        
+    }
 
-
+    public void SetOk()
+    {
+        notePlayed = true;
+        AudioController.instance.Play(NoteData.Note);
+        Destroy(gameObject);
     }
 }
