@@ -40,6 +40,9 @@ public class GameController : MonoBehaviour
     public PlayLineScript[] PlayLineSegments = new PlayLineScript[5];
 
     public MiniGameEnum MiniGameToStart = MiniGameEnum.Note;
+    private GameObject currentMiniGameObj;
+    private int handledNotes;
+    public int noteTotalCount;
 
 
     void Awake()
@@ -76,6 +79,8 @@ public class GameController : MonoBehaviour
             }
         }
 
+        
+        
         foreach (var kv in KeyMap)
         {
             if (Input.GetKeyDown(kv.Value))
@@ -85,6 +90,7 @@ public class GameController : MonoBehaviour
                 {
                     AudioController.instance.Play("boo_short_1");
                     FailNote();
+                    handledNotes++;
                     return;
                 }
                 else
@@ -92,14 +98,21 @@ public class GameController : MonoBehaviour
                     if (GameController.instance.currentlyPressing == segment.CollidingNote.NoteData.Key)
                     {
                         segment.CollidingNote.SetOk();
+                        handledNotes++;
                     }
                     else
                     {
                         AudioController.instance.Play("boo_short_1");
                         FailNote();
+                        handledNotes++;
                     }
                 }
             }
+        }
+
+        if (handledNotes >= noteTotalCount)
+        {
+            EndMiniGame();
         }
 
 
@@ -122,13 +135,14 @@ public class GameController : MonoBehaviour
 
         if (MiniGameToStart == MiniGameEnum.Note)
         {
-            NoteMiniGame.SetActive(true);
-            JokeMiniGame.SetActive(false);
+
+            currentMiniGameObj =  Instantiate(NoteMiniGame);
+            
         }
         else if (MiniGameToStart == MiniGameEnum.Joke)
         {
-            NoteMiniGame.SetActive(false);
-            JokeMiniGame.SetActive(true);
+
+            currentMiniGameObj = Instantiate(JokeMiniGame);
         }
     }
 
@@ -164,14 +178,13 @@ public class GameController : MonoBehaviour
 
     public void EndMiniGame()
     {
+        Destroy(currentMiniGameObj);
         if (MiniGameToStart == MiniGameEnum.Joke)
         {
-            JokeMiniGame.SetActive(false);
             MiniGameToStart = MiniGameEnum.Note;
         }
         else if (MiniGameToStart == MiniGameEnum.Note)
         {
-            NoteMiniGame.SetActive(false);
             MiniGameToStart = MiniGameEnum.Joke;
         }
        

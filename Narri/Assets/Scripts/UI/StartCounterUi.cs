@@ -27,7 +27,9 @@ public class StartCounterUi : MonoBehaviour
 
     private void StartNewCounter()
     {
-       gameObject.SetActive(true);
+        gameObject.SetActive(true);
+        TimeCounter.text = timeLeft.ToString();
+        countDownTimer = Time.time;
     }
 
     // Update is called once per frame

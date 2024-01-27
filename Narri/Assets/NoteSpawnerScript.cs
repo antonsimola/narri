@@ -32,6 +32,8 @@ public class NoteSpawnerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        GameController.instance.noteTotalCount = Notes.Count;
         foreach (var note in Notes)
         {
             StartCoroutine(QueueNote(tempo, note));
