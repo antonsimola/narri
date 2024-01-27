@@ -6,7 +6,7 @@ using UnityEngine;
 public class NoteSpawnerScript : MonoBehaviour
 {
     private float gameTime = 0;
-    [SerializeField] public float tempo = 240;
+    [SerializeField] public float tempo = 120;
 
     [SerializeField] public NoteScript NotePrefab;
 
@@ -19,9 +19,9 @@ public class NoteSpawnerScript : MonoBehaviour
         new NoteData() { Note = "c3", StartTime = 1.5f, Key = 2 },
         new NoteData() { Note = "d3", StartTime = 2, Key = 3 },
 
-        new NoteData() { Note = "e3", StartTime = 2.5f, Key = 2 },
+        new NoteData() { Note = "c3", StartTime = 2.5f, Key = 2 },
         new NoteData() { Note = "b2", StartTime = 2.75f, Key = 1 },
-        new NoteData() { Note = "b2", StartTime = 3.0f, Key = 0 },
+        new NoteData() { Note = "a2", StartTime = 3.0f, Key = 0 },
     };
 
 
