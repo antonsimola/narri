@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    
+    
 
     void Awake()
     {
@@ -32,6 +34,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("Exit");
             SceneController.instance.exitgame();
         }
     }
