@@ -230,6 +230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87344681ae7497b4a94ee5862a1a16f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 100
+  damageOnFail: 10
   NoteMiniGame: {fileID: 123583967}
 --- !u!1 &123583967
 GameObject:
@@ -548,7 +550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHealthField: {fileID: 444599573}
-  playerHealth: 100
 --- !u!1 &382521333
 GameObject:
   m_ObjectHideFlags: 0
@@ -8002,6 +8003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466cf73e1a1a2ce40a59ca0f16683036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tempo: 240
   NotePrefab: {fileID: 4714104889423896752, guid: fb48ae78cea13ab4f9e0ba07a794fde4, type: 3}
 --- !u!1 &1832925229
 GameObject:

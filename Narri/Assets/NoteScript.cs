@@ -45,6 +45,7 @@ public class NoteScript : Collidable
             if (!AudioController.instance.IsPlaying("boo_short_1"))
             {
                 AudioController.instance.Play("boo_short_1");
+                Debug.Log("Wrong");
                 GameController.instance.FailNote();
             }
         }
