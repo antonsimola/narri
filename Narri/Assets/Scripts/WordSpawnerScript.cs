@@ -228,7 +228,12 @@ namespace DefaultNamespace
             {
                 Debug.Log("Missed word " + wordObj._cleanWord);
                 //User has not finished the word yet
+                Words.TryDequeue(out var _);
+                WordObjs.TryDequeue(out var _);
+                UpdateWord();
             }
+
+
 
             UpdateFullJoke();
         }

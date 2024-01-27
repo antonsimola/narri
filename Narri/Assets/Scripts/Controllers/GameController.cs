@@ -117,8 +117,10 @@ public class GameController : MonoBehaviour
     {
 
         Random rand = new Random();
-        int randNum = rand.Next(2);
-        MiniGameToStart = (MiniGameEnum)randNum;
+         int randNum = rand.Next(2);
+        // MiniGameToStart = (MiniGameEnum)randNum;
+        MiniGameToStart = MiniGameEnum.Joke; 
+        
 
         if (MiniGameToStart == MiniGameEnum.Note)
         {
