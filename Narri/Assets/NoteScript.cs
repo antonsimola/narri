@@ -26,7 +26,7 @@ public class NoteScript : Collidable
         transform.Translate(Vector3.left * tempo  * Time.deltaTime);
     }
 
-    protected override void OnCollide(Collider2D coll)
+    public void OnTriggerStay2D(Collider2D coll)
     {
         if (GameController.instance.currentlyPressing == null || notePlayed)
         {
@@ -36,10 +36,10 @@ public class NoteScript : Collidable
         notePlayed = true;
         if (GameController.instance.currentlyPressing == NoteData.Key)
         {
-            Debug.Log("playing");
             if (!AudioController.instance.IsPlaying(NoteData.Note))
             {
                 AudioController.instance.Play(NoteData.Note);
+                Destroy(gameObject);
             }
         }
         else
@@ -48,9 +48,22 @@ public class NoteScript : Collidable
             if (!AudioController.instance.IsPlaying("boo_short_1"))
             {
                 AudioController.instance.Play("boo_short_1");
-                Debug.Log("Wrong");
                 GameController.instance.FailNote();
             }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+
+        if (!notePlayed)
+        {
+            Debug.Log("Missed note");
+            AudioController.instance.Play("boo_short_1");
+            GameController.instance.FailNote();
+        }
+        
+
+
     }
 }

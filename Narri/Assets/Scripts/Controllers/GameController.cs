@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
     public event Action<int> OnPlayerDamageTaken;
 
 
+    public Dictionary<int, PlayLineScript> PlayLineSegments = new Dictionary<int, PlayLineScript>();
+
+
     void Awake()
     {
         if (instance == null)
@@ -55,9 +58,14 @@ public class GameController : MonoBehaviour
         currentlyPressing = null;
         foreach (var kv in KeyMap)
         {
+            var nohit = false;
             if (Input.GetKey(kv.Value))
             {
                 currentlyPressing = kv.Key;
+                if (!PlayLineSegments[kv.Key].IsColliding)
+                {
+                       
+                }
             }
         }
 

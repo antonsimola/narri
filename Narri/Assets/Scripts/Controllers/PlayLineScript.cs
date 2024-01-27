@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,9 @@ public class PlayLineScript : Collidable
 
     [SerializeField] private TMP_Text NoteText;
     public int Key; // 0,1,2,3,4
+
+    public bool IsColliding { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +29,15 @@ public class PlayLineScript : Collidable
     protected override void OnCollide(Collider2D coll)
     {
         base.OnCollide(coll);
-        
+        IsColliding = true;
     }
+
+    protected override void NoCollisions()
+    {
+        base.NoCollisions();
+        IsColliding = false;
+    }
+
 
     public void SetText(string key)
     {
