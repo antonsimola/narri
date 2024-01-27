@@ -8,8 +8,10 @@ using UnityEngine.Serialization;
 public class NoteScript : Collidable
 {
     public float tempo = 1;
-    
 
+
+
+    private bool notePlayed = false;
     public NoteData NoteData;
     // Start is called before the first frame update
     override protected void Start()
@@ -26,11 +28,12 @@ public class NoteScript : Collidable
 
     protected override void OnCollide(Collider2D coll)
     {
-        if (GameController.instance.currentlyPressing == null)
+        if (GameController.instance.currentlyPressing == null || notePlayed)
         {
             return; // dont play sound if nothing is pressed
         }
-        
+
+        notePlayed = true;
         if (GameController.instance.currentlyPressing == NoteData.Key)
         {
             Debug.Log("playing");
