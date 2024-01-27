@@ -71,7 +71,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -530,7 +530,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -538,6 +538,69 @@ TextureImporter:
       bones: []
       spriteID: 4e5b94b160e4a7c47b9e5eeb142257d5
       internalID: 1987523576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stares_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 308
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f531ca0ee48d2e43b333d38dfc5e618
+      internalID: -875013155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: king
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 404
+        width: 51
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65deaf277dd6c0b408fd1ee13e10a5ca
+      internalID: 275852818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: note_fail
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 356
+        width: 32
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0624356b65dd45c4f9fd8427ebfb7fce
+      internalID: -575885293
       vertices: []
       indices: 
       edges: []
@@ -559,10 +622,13 @@ TextureImporter:
       banner_3: -524775205
       brick_wall: -1562808841
       happy_face: 426833290
+      king: 275852818
       note: -434868201
+      note_fail: -575885293
       playLine: 1987523576
       sad_face: 1771192185
       stares_0: -464444682
+      stares_1: -875013155
       throne_0: 1087240552
       throne_1: 1618119716
       throne_2: -233218772
