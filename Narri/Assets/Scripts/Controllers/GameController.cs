@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -32,7 +33,7 @@ public class GameController : MonoBehaviour
     public event Action<int> OnPlayerDamageTaken;
 
 
-    public Dictionary<int, PlayLineScript> PlayLineSegments = new Dictionary<int, PlayLineScript>();
+    public PlayLineScript[] PlayLineSegments = new PlayLineScript[5];
 
 
     void Awake()
@@ -56,18 +57,47 @@ public class GameController : MonoBehaviour
     void Update()
     {
         currentlyPressing = null;
+        if (PlayLineSegments[0] == null) return;
+        
         foreach (var kv in KeyMap)
         {
-            var nohit = false;
+            
             if (Input.GetKey(kv.Value))
             {
                 currentlyPressing = kv.Key;
-                if (!PlayLineSegments[kv.Key].IsColliding)
+            }
+        }
+        
+        foreach (var kv in KeyMap)
+        {
+            
+            if (Input.GetKeyDown(kv.Value))
+            {
+                var segment = PlayLineSegments[kv.Key];
+                if (!segment.IsColliding)
                 {
-                       
+                    AudioController.instance.Play("boo_short_1");
+                    FailNote();
+                    return;
+                }
+                else
+                {
+                    Debug.Log("OK");
+                    if (GameController.instance.currentlyPressing == segment.CollidingNote.NoteData.Key)
+                    {
+                        
+                        segment.CollidingNote.SetOk();
+                    }
+                    else
+                    {
+                        AudioController.instance.Play("boo_short_1");
+                        FailNote();
+                    }
                 }
             }
         }
+        
+      
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

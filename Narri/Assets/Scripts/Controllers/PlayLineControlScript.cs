@@ -11,7 +11,7 @@ public class PlayLineControlScript : MonoBehaviour
         for (var i = 4; i >= 0; i--)
         {
             var playLine =  Instantiate(playLinePrefab, new Vector3(-4, (5- i + GameController.YOffset) * 0.32f, 0), Quaternion.identity);
-            playLine.Key = i;
+            playLine.SetKey(i);
             playLine.SetText(GameController.KeyMap[i].ToString());
         }
     }
