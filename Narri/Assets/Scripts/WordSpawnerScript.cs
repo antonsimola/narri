@@ -18,10 +18,27 @@ namespace DefaultNamespace
 
         private string FullJoke;
 
-        private string CurrentString;
+        private string CurrentString = "";
         private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
         private Queue<string> Words = new Queue<string>();
         private Queue<WordScript> WordObjs = new Queue<WordScript>();
+        public static WordSpawnerScript instance;
+
+        private List<WordScript> completedWords = new List<WordScript>();
+        private List<WordScript> failedWords = new List<WordScript>();
+
+        void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+        
         public void Start()
         {
             var r = new Random(1);
@@ -32,9 +49,7 @@ namespace DefaultNamespace
             foreach (var word in words)
             {
                 var y = r.NextInt(0, 5);
-                
                 var cleanedWord = Regex.Replace(word, "[^A-Za-z0-9äö]", "").ToLowerInvariant();
-                
                 Words.Enqueue(cleanedWord);
                 
                 StartCoroutine(QueueWord(wordInterval, cleanedWord,y,  j++));
@@ -96,6 +111,7 @@ namespace DefaultNamespace
                 }
 
                 var words = WordObjs.Peek();
+                words._cleanWord = CurrentString;
                 words.SetWord(ConstructStyle());
                 Debug.Log(CurrentString);
             }
@@ -103,6 +119,8 @@ namespace DefaultNamespace
 
         private string ConstructStyle()
         {
+            
+            
             var target = Words.Peek();
             var i = 0;
             var styled = "";
@@ -130,11 +148,40 @@ namespace DefaultNamespace
         {
             var word = Words.Dequeue();
             var wordObj = WordObjs.Dequeue();
+            
+            
             if (CurrentString != word)
             {
+                failedWords.Add(wordObj);
                 GameController.instance.FailWord();
-            } 
+            }
+            else
+            {
+                completedWords.Add(wordObj);
+            }
             CurrentString = "";
         }
+
+        public void OnWordHitWall(WordScript wordObj)
+        {
+            if (failedWords.Contains(wordObj))
+            {
+                Debug.Log("Failed word " + wordObj._cleanWord);
+            }
+            else if (completedWords.Contains(wordObj))
+            {
+                Debug.Log("Completed word " + wordObj._cleanWord);
+            }
+            else
+            {
+                
+                Debug.Log("Missed word " + wordObj._cleanWord);
+
+                //User has not finished the word yet
+            }
+            
+            
+        }
+        
     }
 }
