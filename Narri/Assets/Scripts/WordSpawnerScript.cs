@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = Unity.Mathematics.Random;
@@ -20,11 +21,12 @@ namespace DefaultNamespace
         private string CurrentString;
         private readonly Array keyCodes = Enum.GetValues(typeof(KeyCode));
         private Queue<string> Words = new Queue<string>();
+        private Queue<WordScript> WordObjs = new Queue<WordScript>();
         public void Start()
         {
             var r = new Random(1);
-            var i = r.NextInt(0, JokeHolder.Jokes.Count);
-            var joke  = JokeHolder.Jokes[i];
+            var i = r.NextInt(0, Jokes.JokeList.Count);
+            var joke  = Jokes.JokeList[i];
             var words = joke.Split(" ");
             var j = 0;
             foreach (var word in words)
@@ -37,7 +39,6 @@ namespace DefaultNamespace
                 
                 StartCoroutine(QueueWord(wordInterval, cleanedWord,y,  j++));
             }
-
         }
 
         private IEnumerator QueueWord(float speed, string word, int y, int j)
@@ -46,6 +47,7 @@ namespace DefaultNamespace
             var wordObj = Instantiate(WordPrefab, new Vector3(5, y * 0.32f), Quaternion.identity);
             wordObj.SetWord(word);
             wordObj.SetSpeed(wordMoveSpeed);
+            WordObjs.Enqueue(wordObj);
         }
 
         void Update()
@@ -59,19 +61,19 @@ namespace DefaultNamespace
                         if (keyCode == KeyCode.Semicolon)
                         {
                             CurrentString += "ö";
-                            return;
+                            break;
                         }
                         
                         if (keyCode == KeyCode.Quote)
                         {
                             CurrentString += "ä";
-                            return;
+                            break;
                         }
                         
                         if (keyCode == KeyCode.LeftBracket)
                         {
                             CurrentString += "å";
-                            return;
+                            break;
                         }
                         if (keyCode == KeyCode.Space)
                         {
@@ -82,7 +84,7 @@ namespace DefaultNamespace
                         if (keyCode == KeyCode.Backspace)
                         {
                             CurrentString = CurrentString.Substring(0, CurrentString.Length - 1);
-                            return;
+                            break;
                         }
                         
                         if (keyCode.ToString().Length > 1) break;
@@ -92,15 +94,46 @@ namespace DefaultNamespace
                         break;
                     }
                 }
+
+                var words = WordObjs.Peek();
+                words.SetWord(ConstructStyle());
                 Debug.Log(CurrentString);
             }
-            
-             
+        }
+
+        private string ConstructStyle()
+        {
+            var target = Words.Peek();
+            var i = 0;
+            var styled = "";
+            foreach (var c in CurrentString)
+            {
+                if (i >= target.Length) continue;
+                
+                if (c != target[i])
+                {
+                    styled += $"<color=red>{c}</color>";
+                }
+                else
+                {
+                    styled += $"<color=green>{c}</color>";
+                }
+                i++;
+            }
+
+            styled += target.Substring(i);
+
+            return styled;
         }
 
         private void ValidateCurrent()
         {
-            Debug.Log(CurrentString);
+            var word = Words.Dequeue();
+            var wordObj = WordObjs.Dequeue();
+            if (CurrentString != word)
+            {
+                GameController.instance.FailWord();
+            } 
             CurrentString = "";
         }
     }

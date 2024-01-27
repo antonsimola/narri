@@ -147,4 +147,10 @@ public class GameController : MonoBehaviour
         //if u need do something on dead
         SceneController.instance.ChangeScene(2);
     }
+
+    public void FailWord()
+    {
+        OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
+
+    }
 }

@@ -7111,8 +7111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04ea26af9264f2986f05b867a547f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordInterval: 1
-  wordMoveSpeed: 2
+  wordInterval: 1.5
+  wordMoveSpeed: 1
   WordPrefab: {fileID: 2805765977322611209, guid: 2d629f84693e33547bb4b846b50b3041, type: 3}
 --- !u!1 &1036752988
 GameObject:

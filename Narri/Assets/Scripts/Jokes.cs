@@ -2,11 +2,11 @@
 
 namespace DefaultNamespace
 {
-    public static class JokeHolder
+    public static class Jokes
     {
-        public static List<string> Jokes = new List<string>()
+        public static List<string> JokeList = new List<string>()
         {
-                "Mustanaamio meni nakkikioskille ja tilasi lihapiirakan. Myyjä kysyi, tuleeko kaikki mausteet? Mustaamio vastaa: Ei."
+                "Mustanaamio meni nakkikioskille ja tilasi lihapiirakan. Myyjä kysyi, tuleeko kaikki mausteet? Mustanaamio vastaa: Ei."
         };
     }
 }
