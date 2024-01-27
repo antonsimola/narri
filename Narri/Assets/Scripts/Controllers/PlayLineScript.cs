@@ -13,6 +13,8 @@ public class PlayLineScript : Collidable
     public bool IsColliding;
     public NoteScript CollidingNote = null;
 
+    public PlayLineControlScript control;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,8 @@ public class PlayLineScript : Collidable
     {
         IsColliding = false;
         CollidingNote = null;
+
+        control.ExitedPlayLine(other);
     }
     
 

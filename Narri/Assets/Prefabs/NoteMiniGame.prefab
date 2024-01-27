@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playLinePrefab: {fileID: 5059520883157460031, guid: f807810f73a819347a36f96f639bcfaf, type: 3}
+  failNote: {fileID: -575885293, guid: b907ef0cd0fc5264384f0b6b3805b0e4, type: 3}
   PlayLineSegments:
   - {fileID: 0}
   - {fileID: 0}

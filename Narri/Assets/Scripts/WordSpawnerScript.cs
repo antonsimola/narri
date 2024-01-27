@@ -152,6 +152,7 @@ namespace DefaultNamespace
             }
 
             UpdateWord();
+            UpdateFullJoke();
         }
 
         private void UpdateWord()

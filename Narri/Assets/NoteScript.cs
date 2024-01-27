@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 public class NoteScript : Collidable
 {
     public float tempo = 1;
-    [SerializeField] private Sprite failNote; 
 
     public bool notePlayed = false;
     public NoteData NoteData;
@@ -54,22 +53,8 @@ public class NoteScript : Collidable
         // }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-
-        if (!notePlayed)
-        {
-            Debug.Log("Missed note");
-            GetComponent<SpriteRenderer>().sprite = failNote;
-            AudioController.instance.Play("boo_short_1");
-            GameController.instance.FailNote();
-        }
-    }
-
     public void SetOk()
     {
-        notePlayed = true;
-        AudioController.instance.Play(NoteData.Note);
-        Destroy(gameObject);
+       
     }
 }

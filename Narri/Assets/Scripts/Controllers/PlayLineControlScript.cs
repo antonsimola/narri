@@ -7,6 +7,7 @@ public class PlayLineControlScript : MonoBehaviour
 {
     public PlayLineScript playLinePrefab;
 
+    [SerializeField] private Sprite failNote;
 
     public PlayLineScript[] PlayLineSegments = new PlayLineScript[5];
 
@@ -22,6 +23,8 @@ public class PlayLineControlScript : MonoBehaviour
 
     public int handledNotes;
     public int noteTotalCount;
+    public HashSet<GameObject> failedNotes = new();
+    public HashSet<GameObject> okNotes = new();
 
 
     // Start is called before the first frame update
@@ -33,6 +36,7 @@ public class PlayLineControlScript : MonoBehaviour
                 Quaternion.identity);
             playLine.SetKey(i);
             playLine.SetText(KeyMap[i].ToString());
+            playLine.control = this;
             PlayLineSegments[i] = playLine;
         }
     }
@@ -68,27 +72,27 @@ public class PlayLineControlScript : MonoBehaviour
                 {
                     AudioController.instance.Play("boo_short_1");
                     FailNote();
-                    handledNotes++;
                     return;
                 }
                 else
                 {
                     if (currentlyPressing == segment.CollidingNote.NoteData.Key)
                     {
-                        segment.CollidingNote.SetOk();
-                        handledNotes++;
+                        okNotes.Add(segment.CollidingNote.gameObject);
+                        AudioController.instance.Play(segment.CollidingNote.NoteData.Note);
+                        Destroy(segment.CollidingNote.gameObject);
                     }
                     else
                     {
+                        failedNotes.Add(segment.CollidingNote.gameObject);
                         AudioController.instance.Play("boo_short_1");
                         FailNote();
-                        handledNotes++;
                     }
                 }
             }
         }
 
-        if (handledNotes >= noteTotalCount)
+        if (okNotes.Count + failedNotes.Count >= noteTotalCount)
         {
             GameController.instance.EndMiniGame();
         }
@@ -101,9 +105,29 @@ public class PlayLineControlScript : MonoBehaviour
         }
     }
 
+
     public void FailNote()
     {
-        //TODO decrement fail counter
+        GameController.instance.FailNote();
+    }
+
+    public void ExitedPlayLine(Collider2D other)
+    {
+        if (failedNotes.Contains(other.gameObject))
+        {
+            return;
+        }
+        
+        if (okNotes.Contains(other.gameObject))
+        {
+            return;
+        }
+
+        failedNotes.Add(other.gameObject);
+
+        Debug.Log("Missed note");
+        other.gameObject.GetComponent<SpriteRenderer>().sprite = failNote;
+        AudioController.instance.Play("boo_short_1");
         GameController.instance.FailNote();
     }
 }
