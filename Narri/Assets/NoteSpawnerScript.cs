@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
@@ -9,8 +10,11 @@ public class NoteSpawnerScript : MonoBehaviour
     [SerializeField] float tempo = 90;
 
     [SerializeField] public NoteScript NotePrefab;
+    [SerializeField] public PlayLineControlScript PlayLineControl;
 
     private bool gameStarted = true;
+    
+    
 
     public IList<NoteData> Notes = new List<NoteData>()
     {
@@ -28,12 +32,14 @@ public class NoteSpawnerScript : MonoBehaviour
         new NoteData() { Note = "e3", StartTime = 5.5f, Key = 4 },
     };
 
+    private List<NoteScript> NoteObjs = new List<NoteScript>();
+
 
     // Start is called before the first frame update
     void Start()
     {
 
-        GameController.instance.noteTotalCount = Notes.Count;
+        PlayLineControl.noteTotalCount = Notes.Count;
         foreach (var note in Notes)
         {
             StartCoroutine(QueueNote(tempo, note));
@@ -47,10 +53,19 @@ public class NoteSpawnerScript : MonoBehaviour
         var obj = Instantiate(NotePrefab, new Vector3(0, (5 - notedata.Key  + GameController.YOffset) * 0.32f + 0.16f , 0),
             Quaternion.identity);
         obj.NoteData = notedata;
+        NoteObjs.Add(obj);
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var note in NoteObjs)
+        {
+            Destroy(note.gameObject);
+        }
     }
 }

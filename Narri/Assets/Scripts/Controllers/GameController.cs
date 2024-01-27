@@ -20,29 +20,16 @@ public class GameController : MonoBehaviour
     public Random Random = new Random((int)DateTime.Now.Ticks % 10000000);
 
     public static int YOffset = -3;
-
-    public static IDictionary<int, KeyCode> KeyMap = new Dictionary<int, KeyCode>()
-    {
-        { 0, KeyCode.G },
-        { 1, KeyCode.H },
-        { 2, KeyCode.J },
-        { 3, KeyCode.K },
-        { 4, KeyCode.L },
-    };
-
-    public int? currentlyPressing;
-
+    
     // call ->  OnPlayerDamageTaken?.Invoke(newHealt);
     public event Action<int> OnPlayerDamageTaken;
     public event Action onMiniGameEnded;
 
 
-    public PlayLineScript[] PlayLineSegments = new PlayLineScript[5];
+    
 
     public MiniGameEnum MiniGameToStart = MiniGameEnum.Note;
     private GameObject currentMiniGameObj;
-    private int handledNotes;
-    public int noteTotalCount;
 
 
     void Awake()
@@ -66,68 +53,9 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        currentlyPressing = null;
-        if (PlayLineSegments[0] == null) return;
+   
 
-        foreach (var kv in KeyMap)
-        {
-            if (Input.GetKey(kv.Value))
-            {
-                currentlyPressing = kv.Key;
-            }
-        }
-
-        
-        
-        foreach (var kv in KeyMap)
-        {
-            if (Input.GetKeyDown(kv.Value))
-            {
-                var segment = PlayLineSegments[kv.Key];
-                if (!segment.IsColliding)
-                {
-                    AudioController.instance.Play("boo_short_1");
-                    FailNote();
-                    handledNotes++;
-                    return;
-                }
-                else
-                {
-                    if (GameController.instance.currentlyPressing == segment.CollidingNote.NoteData.Key)
-                    {
-                        segment.CollidingNote.SetOk();
-                        handledNotes++;
-                    }
-                    else
-                    {
-                        AudioController.instance.Play("boo_short_1");
-                        FailNote();
-                        handledNotes++;
-                    }
-                }
-            }
-        }
-
-        if (handledNotes >= noteTotalCount)
-        {
-            EndMiniGame();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Exit");
-            SceneController.instance.ChangeScene(0);
-        }
-    }
-
-    public void FailNote()
-    {
-        //TODO decrement fail counter
-        OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
-    }
+    
     
 
     public void StartNewMiniGame()
@@ -173,7 +101,12 @@ public class GameController : MonoBehaviour
     public void FailWord()
     {
         OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
-
+    }
+    
+    public void FailNote()
+    {
+        //TODO decrement fail counter
+        OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
     }
 
     public void EndMiniGame()

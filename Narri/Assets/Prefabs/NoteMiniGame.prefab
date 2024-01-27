@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempo: 90
   NotePrefab: {fileID: 4714104889423896752, guid: fb48ae78cea13ab4f9e0ba07a794fde4, type: 3}
+  PlayLineControl: {fileID: 5365178252030053989}
 --- !u!1 &4032589273398894204
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,3 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playLinePrefab: {fileID: 5059520883157460031, guid: f807810f73a819347a36f96f639bcfaf, type: 3}
+  PlayLineSegments:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  handledNotes: 0
+  noteTotalCount: 0

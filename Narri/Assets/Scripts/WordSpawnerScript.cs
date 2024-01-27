@@ -66,6 +66,22 @@ namespace DefaultNamespace
             Debug.Log("started");
         }
 
+        private void OnDestroy()
+        {
+            foreach (var failedWord in failedWords)
+            {
+                Destroy(failedWord.gameObject);
+            }
+            foreach (var word in completedWords)
+            {
+                Destroy(word.gameObject);
+            }
+            foreach (var word in completedWords)
+            {
+                Destroy(word.gameObject);
+            }
+        }
+
         private IEnumerator QueueWord(float speed, string word, int y, int j)
         {
             yield return new WaitForSeconds(speed * j);

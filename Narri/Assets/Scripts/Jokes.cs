@@ -7,7 +7,7 @@ namespace DefaultNamespace
         public static List<string> JokeList = new List<string>()
         {
             "Mustanaamio meni nakkikioskille ja tilasi lihapiirakan. Myyjä kysyi, tuleeko kaikki mausteet? Mustanaamio vastaa: Ei.",
-            "Montako ohjelmoijaa vaatii ohjelmoida peli 48 tunnissa? Ainakin yli kaksi!"
+            "Montako ohjelmoijaa vaatii tekemään pelin 48 tunnissa? Ainakin yli kaksi!"
         };
 
         public static IList<Dictionary<string, string[]>> WordFailAlternatives { get; set; } =

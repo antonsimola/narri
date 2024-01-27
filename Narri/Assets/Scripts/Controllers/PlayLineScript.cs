@@ -48,6 +48,5 @@ public class PlayLineScript : Collidable
     public void SetKey(int key)
     {
         Key = key;
-        GameController.instance.PlayLineSegments[key] = this;
     }
 }
