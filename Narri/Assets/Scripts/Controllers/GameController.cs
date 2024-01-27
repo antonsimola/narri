@@ -115,6 +115,11 @@ public class GameController : MonoBehaviour
 
     public void StartNewMiniGame()
     {
+
+        Random rand = new Random();
+        int randNum = rand.Next(2);
+        MiniGameToStart = (MiniGameEnum)randNum;
+
         if (MiniGameToStart == MiniGameEnum.Note)
         {
             NoteMiniGame.SetActive(true);
