@@ -30,7 +30,6 @@ public class PlayLineScript : Collidable
     {
         IsColliding = true;
         this.CollidingNote = coll.gameObject.GetComponent<NoteScript>();
-        Debug.Log("Is collide " + CollidingNote.NoteData);
     }
 
     public void OnTriggerExit2D(Collider2D other)

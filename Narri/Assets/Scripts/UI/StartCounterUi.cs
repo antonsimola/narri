@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Utility;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,7 +14,7 @@ public class StartCounterUi : MonoBehaviour
     [SerializeField]
     private float timeLeft = 5;
     private float countDownTimer;
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class StartCounterUi : MonoBehaviour
         {
             
             Debug.Log("Start game here");
-            GameController.instance.StartNoteMiniGame();
+            GameController.instance.StartNewMiniGame();    
             Destroy(gameObject);
         }
         else

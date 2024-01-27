@@ -116,6 +116,8 @@ MonoBehaviour:
   boxCollider: {fileID: 5730746938192360910}
   circleCollider: {fileID: 0}
   tempo: 1
+  failNote: {fileID: -575885293, guid: b907ef0cd0fc5264384f0b6b3805b0e4, type: 3}
+  notePlayed: 0
 --- !u!61 &5730746938192360910
 BoxCollider2D:
   m_ObjectHideFlags: 0
