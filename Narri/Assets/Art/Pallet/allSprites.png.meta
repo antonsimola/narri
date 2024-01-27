@@ -614,7 +614,7 @@ TextureImporter:
         width: 51
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -622,6 +622,48 @@ TextureImporter:
       bones: []
       spriteID: b582f23191b2cae4aae0a95e9999de65
       internalID: -1105094899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lamp
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 396
+        width: 58
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e65fdcd16a1649f4181486567a3965a9
+      internalID: 1618484506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: light
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 264
+        width: 83
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990bcd687d511ec499047b7a62cb6f79
+      internalID: 969836273
       vertices: []
       indices: 
       edges: []
@@ -645,6 +687,8 @@ TextureImporter:
       happy_face: 426833290
       king_0: 275852818
       king_1: -1105094899
+      lamp: 1618484506
+      light: 969836273
       note: -434868201
       note_fail: -575885293
       playLine: 1987523576
