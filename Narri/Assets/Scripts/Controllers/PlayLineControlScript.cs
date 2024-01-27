@@ -8,10 +8,11 @@ public class PlayLineControlScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (var i = 0; i < 5; i++)
+        for (var i = 4; i >= 0; i--)
         {
-            var playLine =  Instantiate(playLinePrefab, new Vector3(-4, i-2, 0), Quaternion.identity);
+            var playLine =  Instantiate(playLinePrefab, new Vector3(-4, 5- i + GameController.YOffset, 0), Quaternion.identity);
             playLine.Key = i;
+            playLine.SetText(GameController.KeyMap[i].ToString());
         }
     }
 

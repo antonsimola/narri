@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeCounter: {fileID: 520414167}
-  timeLeft: 5
+  timeLeft: 1
 --- !u!1 &312163567
 GameObject:
   m_ObjectHideFlags: 0

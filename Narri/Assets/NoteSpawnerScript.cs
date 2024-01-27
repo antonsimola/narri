@@ -6,7 +6,7 @@ using UnityEngine;
 public class NoteSpawnerScript : MonoBehaviour
 {
     private float gameTime = 0;
-
+    [SerializeField] public float tempo = 240;
 
     [SerializeField] public NoteScript NotePrefab;
 
@@ -18,28 +18,27 @@ public class NoteSpawnerScript : MonoBehaviour
         new NoteData() { Note = "b2", StartTime = 1, Key = 1 },
         new NoteData() { Note = "c3", StartTime = 1.5f, Key = 2 },
         new NoteData() { Note = "d3", StartTime = 2, Key = 3 },
-        
+
         new NoteData() { Note = "e3", StartTime = 2.5f, Key = 2 },
         new NoteData() { Note = "b2", StartTime = 2.75f, Key = 1 },
-        new NoteData() { Note = "c3", StartTime = 1.25f, Key = 0 },
-        
+        new NoteData() { Note = "b2", StartTime = 3.0f, Key = 0 },
     };
 
 
     // Start is called before the first frame update
     void Start()
     {
-        var tempo = 60;
         foreach (var note in Notes)
         {
-            StartCoroutine(QueueNote(note));
+            StartCoroutine(QueueNote(tempo, note));
         }
     }
 
-    IEnumerator QueueNote(NoteData notedata)
+    IEnumerator QueueNote(float tempo, NoteData notedata)
     {
-        yield return new WaitForSeconds(notedata.StartTime);
-        var obj = Instantiate(NotePrefab, new Vector3(0, 5 - notedata.Key - 2, 0), Quaternion.identity);
+        yield return new WaitForSeconds( tempo / 60f * notedata.StartTime);
+        var obj = Instantiate(NotePrefab, new Vector3(0, 5 - notedata.Key + GameController.YOffset, 0),
+            Quaternion.identity);
         obj.NoteData = notedata;
     }
 

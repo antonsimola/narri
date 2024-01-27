@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public GameObject NoteMiniGame;
 
+    public static int YOffset = -3;
+    
     public static IDictionary<int, KeyCode> KeyMap = new Dictionary<int, KeyCode>()
     {
         { 0, KeyCode.G },
@@ -65,6 +67,5 @@ public class GameController : MonoBehaviour
     public void StartNoteMiniGame()
     {
         NoteMiniGame.SetActive(true);
-        throw new NotImplementedException();
     }
 }
