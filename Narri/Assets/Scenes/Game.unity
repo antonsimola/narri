@@ -185,6 +185,12 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: boo_short_1
+    clip: {fileID: 8300000, guid: 87b2bffbb6169ca48bdd8e3abefef3d7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &101527073
 Transform:
   m_ObjectHideFlags: 0
@@ -239,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &123583968
 Transform:
   m_ObjectHideFlags: 0

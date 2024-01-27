@@ -10,7 +10,7 @@ public class PlayLineControlScript : MonoBehaviour
     {
         for (var i = 0; i < 5; i++)
         {
-            var playLine =  Instantiate(playLinePrefab, new Vector3(-5, i-2, 0), Quaternion.identity);
+            var playLine =  Instantiate(playLinePrefab, new Vector3(-4, i-2, 0), Quaternion.identity);
             playLine.Key = i;
         }
     }

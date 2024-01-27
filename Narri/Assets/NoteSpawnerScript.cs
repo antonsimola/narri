@@ -14,18 +14,22 @@ public class NoteSpawnerScript : MonoBehaviour
 
     public IList<NoteData> Notes = new List<NoteData>()
     {
-        new NoteData() { Note = "e3", StartTime = 0, Key = 1 },
-        new NoteData() { Note = "b2", StartTime = 2, Key = 2 },
-        new NoteData() { Note = "c3", StartTime = 3, Key = 3 },
-        new NoteData() { Note = "d3", StartTime = 4, Key = 4 },
-        new NoteData() { Note = "e3", StartTime = 6, Key = 0 },
-        new NoteData() { Note = "e3", StartTime = 8, Key = 1 }
+        new NoteData() { Note = "e3", StartTime = 0, Key = 4 },
+        new NoteData() { Note = "b2", StartTime = 1, Key = 1 },
+        new NoteData() { Note = "c3", StartTime = 1.5f, Key = 2 },
+        new NoteData() { Note = "d3", StartTime = 2, Key = 3 },
+        
+        new NoteData() { Note = "e3", StartTime = 2.5f, Key = 2 },
+        new NoteData() { Note = "b2", StartTime = 2.75f, Key = 1 },
+        new NoteData() { Note = "c3", StartTime = 1.25f, Key = 0 },
+        
     };
 
 
     // Start is called before the first frame update
     void Start()
     {
+        var tempo = 60;
         foreach (var note in Notes)
         {
             StartCoroutine(QueueNote(note));
@@ -35,7 +39,7 @@ public class NoteSpawnerScript : MonoBehaviour
     IEnumerator QueueNote(NoteData notedata)
     {
         yield return new WaitForSeconds(notedata.StartTime);
-        var obj = Instantiate(NotePrefab, new Vector3(0, notedata.Key - 2, 0), Quaternion.identity);
+        var obj = Instantiate(NotePrefab, new Vector3(0, 5 - notedata.Key - 2, 0), Quaternion.identity);
         obj.NoteData = notedata;
     }
 
