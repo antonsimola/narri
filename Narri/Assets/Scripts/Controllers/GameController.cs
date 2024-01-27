@@ -82,7 +82,6 @@ public class GameController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("OK");
                     if (GameController.instance.currentlyPressing == segment.CollidingNote.NoteData.Key)
                     {
                         
