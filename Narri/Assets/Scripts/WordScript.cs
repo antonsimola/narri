@@ -10,6 +10,7 @@ public class WordScript : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private TMP_Text Word;
     public string _cleanWord;
+    public string targetWord;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,6 @@ public class WordScript : MonoBehaviour
     
     public void OnTriggerEnter2D(Collider2D other)
     {
-        WordSpawnerScript.instance.OnWordHitWall(this);
+        WordSpawnerScript.instance.OnWordHitWall(this, gameObject);
     }
 }

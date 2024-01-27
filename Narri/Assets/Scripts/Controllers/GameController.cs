@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DefaultNamespace.Utility;
 using UnityEngine;
+using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public GameObject NoteMiniGame;
     [SerializeField] public GameObject JokeMiniGame;
+
+    public Random Random = new Random(1);
 
     public static int YOffset = -3;
 
