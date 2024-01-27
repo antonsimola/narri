@@ -86,7 +86,8 @@ public class GameController : MonoBehaviour
 
     private int RedusePlayerHealth(int damageTaken)
     {
-        return playerHealth - damageTaken;
+        playerHealth = playerHealth - damageTaken;
+        return playerHealth;
     }
 
 }
