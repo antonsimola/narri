@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
 
     // call ->  OnPlayerDamageTaken?.Invoke(newHealt);
     public event Action<int> OnPlayerDamageTaken;
+    public event Action onMiniGameEnded;
 
 
     public PlayLineScript[] PlayLineSegments = new PlayLineScript[5];
@@ -56,6 +57,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Random rand = new Random();
+        int randNum = rand.Next(2);
+        MiniGameToStart = (MiniGameEnum)randNum;
     }
 
     // Update is called once per frame
@@ -116,12 +120,6 @@ public class GameController : MonoBehaviour
     public void StartNewMiniGame()
     {
 
-        Random rand = new Random();
-         int randNum = rand.Next(2);
-        // MiniGameToStart = (MiniGameEnum)randNum;
-        MiniGameToStart = MiniGameEnum.Joke; 
-        
-
         if (MiniGameToStart == MiniGameEnum.Note)
         {
             NoteMiniGame.SetActive(true);
@@ -166,7 +164,18 @@ public class GameController : MonoBehaviour
 
     public void EndMiniGame()
     {
-        
+        if (MiniGameToStart == MiniGameEnum.Joke)
+        {
+            JokeMiniGame.SetActive(false);
+            MiniGameToStart = MiniGameEnum.Note;
+        }
+        else if (MiniGameToStart == MiniGameEnum.Note)
+        {
+            NoteMiniGame.SetActive(false);
+            MiniGameToStart = MiniGameEnum.Joke;
+        }
+       
+        onMiniGameEnded?.Invoke();
         Debug.Log("End mini game");
     }
 }

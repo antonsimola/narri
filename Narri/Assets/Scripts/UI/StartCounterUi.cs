@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Utility;
@@ -20,7 +21,13 @@ public class StartCounterUi : MonoBehaviour
     void Start()
     {
         TimeCounter.text = timeLeft.ToString();
+        GameController.instance.onMiniGameEnded += StartNewCounter;
         countDownTimer = Time.time;
+    }
+
+    private void StartNewCounter()
+    {
+       gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -31,7 +38,7 @@ public class StartCounterUi : MonoBehaviour
             
             Debug.Log("Start game here");
             GameController.instance.StartNewMiniGame();    
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else
         {
