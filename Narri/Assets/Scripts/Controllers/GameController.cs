@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
+    private int playerHealth = 100;
+
+    [SerializeField]
+    private int damageOnFail = 10;
+
     public static GameController instance;
 
     [SerializeField] public GameObject NoteMiniGame;
@@ -19,6 +25,9 @@ public class GameController : MonoBehaviour
     };
 
     public int? currentlyPressing;
+
+    // call ->  OnPlayerDamageTaken?.Invoke(newHealt);
+    public event Action<int> OnPlayerDamageTaken;
 
 
     void Awake()
@@ -60,6 +69,7 @@ public class GameController : MonoBehaviour
     public void FailNote()
     {
         //TODO decrement fail counter
+        OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
     }
 
     public void StartNoteMiniGame()
@@ -67,4 +77,15 @@ public class GameController : MonoBehaviour
         NoteMiniGame.SetActive(true);
         throw new NotImplementedException();
     }
+
+    public int GetPlayerHealth()
+    {
+        return playerHealth;
+    }
+
+    private int RedusePlayerHealth(int damageTaken)
+    {
+        return playerHealth - damageTaken;
+    }
+
 }
