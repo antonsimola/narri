@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Exit");
-            SceneController.instance.exitgame();
+            SceneController.instance.ChangeScene(0);
         }
     }
 
@@ -87,7 +87,18 @@ public class GameController : MonoBehaviour
     private int RedusePlayerHealth(int damageTaken)
     {
         playerHealth = playerHealth - damageTaken;
+        if (playerHealth <= 0)
+        {
+            Die();
+            return 0;
+        }
         return playerHealth;
+    }
+
+    private void Die()
+    {
+        //if u need do something on dead
+        SceneController.instance.ChangeScene(2);
     }
 
 }

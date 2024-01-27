@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87344681ae7497b4a94ee5862a1a16f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  playerHealth: 50
   damageOnFail: 10
   NoteMiniGame: {fileID: 123583967}
 --- !u!1 &123583967

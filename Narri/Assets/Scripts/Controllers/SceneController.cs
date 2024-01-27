@@ -23,7 +23,12 @@ public class SceneController : MonoBehaviour
 
     public void ChangeScene(int index)
     {
-        Debug.Log(index);
+
+        GameObject[] gameObjects = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in gameObjects)
+        {
+            Destroy(obj);
+        }
         SceneManager.LoadScene(index);
     }
 
