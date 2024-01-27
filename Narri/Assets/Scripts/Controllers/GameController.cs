@@ -2,22 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace.Utility;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField]
-    private int playerHealth = 100;
+    [SerializeField] private int playerHealth = 100;
 
-    [SerializeField]
-    private int damageOnFail = 10;
+    [SerializeField] private int damageOnFail = 10;
 
     public static GameController instance;
 
     [SerializeField] public GameObject NoteMiniGame;
+    [SerializeField] public GameObject JokeMiniGame;
 
     public static int YOffset = -3;
-    
+
     public static IDictionary<int, KeyCode> KeyMap = new Dictionary<int, KeyCode>()
     {
         { 0, KeyCode.G },
@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour
 
 
     public PlayLineScript[] PlayLineSegments = new PlayLineScript[5];
+
+    public MiniGameEnum MiniGameToStart = MiniGameEnum.Note;
 
 
     void Awake()
@@ -58,19 +60,17 @@ public class GameController : MonoBehaviour
     {
         currentlyPressing = null;
         if (PlayLineSegments[0] == null) return;
-        
+
         foreach (var kv in KeyMap)
         {
-            
             if (Input.GetKey(kv.Value))
             {
                 currentlyPressing = kv.Key;
             }
         }
-        
+
         foreach (var kv in KeyMap)
         {
-            
             if (Input.GetKeyDown(kv.Value))
             {
                 var segment = PlayLineSegments[kv.Key];
@@ -84,7 +84,6 @@ public class GameController : MonoBehaviour
                 {
                     if (GameController.instance.currentlyPressing == segment.CollidingNote.NoteData.Key)
                     {
-                        
                         segment.CollidingNote.SetOk();
                     }
                     else
@@ -95,8 +94,7 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-        
-      
+
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -110,11 +108,22 @@ public class GameController : MonoBehaviour
         //TODO decrement fail counter
         OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
     }
+    
 
-    public void StartNoteMiniGame()
+    public void StartNewMiniGame()
     {
-        NoteMiniGame.SetActive(true);
+        if (MiniGameToStart == MiniGameEnum.Note)
+        {
+            NoteMiniGame.SetActive(true);
+            JokeMiniGame.SetActive(false);
+        }
+        else if (MiniGameToStart == MiniGameEnum.Joke)
+        {
+            NoteMiniGame.SetActive(false);
+            JokeMiniGame.SetActive(true);
+        }
     }
+
 
     public int GetPlayerHealth()
     {
@@ -129,6 +138,7 @@ public class GameController : MonoBehaviour
             Die();
             return 0;
         }
+
         return playerHealth;
     }
 
@@ -137,5 +147,4 @@ public class GameController : MonoBehaviour
         //if u need do something on dead
         SceneController.instance.ChangeScene(2);
     }
-
 }
