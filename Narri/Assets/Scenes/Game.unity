@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87344681ae7497b4a94ee5862a1a16f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NoteMiniGame: {fileID: 123583967}
 --- !u!1 &123583967
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &123583968
 Transform:
   m_ObjectHideFlags: 0
@@ -353,6 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeCounter: {fileID: 520414167}
+  timeLeft: 5
 --- !u!1 &312163567
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
+    [SerializeField] public GameObject NoteMiniGame;
+
     public static IDictionary<int, KeyCode> KeyMap = new Dictionary<int, KeyCode>()
     {
         { 0, KeyCode.G },
@@ -58,5 +60,11 @@ public class GameController : MonoBehaviour
     public void FailNote()
     {
         //TODO decrement fail counter
+    }
+
+    public void StartNoteMiniGame()
+    {
+        NoteMiniGame.SetActive(true);
+        throw new NotImplementedException();
     }
 }

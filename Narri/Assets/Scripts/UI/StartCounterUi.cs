@@ -29,6 +29,7 @@ public class StartCounterUi : MonoBehaviour
         {
             
             Debug.Log("Start game here");
+            GameController.instance.StartNoteMiniGame();
             Destroy(gameObject);
         }
         else
