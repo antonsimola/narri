@@ -88,6 +88,7 @@ namespace DefaultNamespace
             var wordObj = Instantiate(WordPrefab, new Vector3(5, y * 0.32f), Quaternion.identity);
             wordObj.SetWord(word);
             wordObj.SetSpeed(wordMoveSpeed);
+            wordObj.targetWord = word;
             WordObjs.Enqueue(wordObj);
         }
 
@@ -112,7 +113,6 @@ namespace DefaultNamespace
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
-                        Debug.Log(keyCode);
                         if (keyCode == KeyCode.Semicolon)
                         {
                             CurrentString += "ö";
@@ -243,17 +243,16 @@ namespace DefaultNamespace
             }
             else
             {
-                Debug.Log("Missed word " + wordObj._cleanWord);
+                Debug.Log("Missed word " + wordObj.targetWord);
                 //User has not finished the word yet
                 Words.TryDequeue(out var _);
                 WordObjs.TryDequeue(out var _);
                 CurrentString = "";
+                wordObj._cleanWord = wordObj.targetWord;
+                completedWords.Add(wordObj);
                 GameController.instance.FailWord();
                 UpdateWord();
             }
-
-
-
             UpdateFullJoke();
         }
 
