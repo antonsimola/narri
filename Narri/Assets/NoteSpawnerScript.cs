@@ -48,8 +48,10 @@ public class NoteSpawnerScript : MonoBehaviour
 
     IEnumerator QueueNote(float tempo, NoteData notedata)
     {
+
+        var tempoDiff = tempo + GameController.instance.NoteGameDifficulty;
         
-        yield return new WaitForSeconds( tempo / 60f * notedata.StartTime);
+        yield return new WaitForSeconds( tempoDiff / 60f * notedata.StartTime);
         var obj = Instantiate(NotePrefab, new Vector3(3, (5 - notedata.Key  + GameController.YOffset) * 0.32f + 0.16f , 0),
             Quaternion.identity);
         obj.NoteData = notedata;

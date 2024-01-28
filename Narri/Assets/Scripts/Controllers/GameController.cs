@@ -29,6 +29,10 @@ public class GameController : MonoBehaviour
     public MiniGameEnum MiniGameToStart = MiniGameEnum.Note;
     private GameObject currentMiniGameObj;
 
+    public float NoteGameDifficulty = 0;
+    public float JokeGameDifficulty = 0;
+    public float JokeGameDifficultyMoveSpeed = 0;
+
 
     void Awake()
     {
@@ -112,13 +116,17 @@ public class GameController : MonoBehaviour
 
     public void EndMiniGame()
     {
+        AudioController.instance.PlayRandomWithPrefix("laugh");
         Destroy(currentMiniGameObj);
         if (MiniGameToStart == MiniGameEnum.Joke)
         {
+            NoteGameDifficulty -= 10;
             MiniGameToStart = MiniGameEnum.Note;
         }
         else if (MiniGameToStart == MiniGameEnum.Note)
         {
+            JokeGameDifficulty -= 0.5f; 
+            JokeGameDifficultyMoveSpeed += 0.5f; 
             MiniGameToStart = MiniGameEnum.Joke;
         }
 

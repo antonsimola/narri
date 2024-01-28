@@ -14,8 +14,8 @@ namespace DefaultNamespace
 {
     public class WordSpawnerScript : MonoBehaviour
     {
-        [SerializeField] public float wordInterval = 30;
-        [SerializeField] public float wordMoveSpeed = 5;
+        [SerializeField] public float wordInterval = 1.5f;
+        [SerializeField] public float wordMoveSpeed = 1f;
 
         public WordScript WordPrefab;
         public TMP_Text CompleteJoke;
@@ -45,6 +45,16 @@ namespace DefaultNamespace
             }
         }
 
+        public float GetMoveSpeed()
+        {
+            return wordMoveSpeed + GameController.instance.JokeGameDifficultyMoveSpeed;
+        }
+        
+        public float GetInterval()
+        {
+            return wordInterval + GameController.instance.JokeGameDifficulty;
+        }
+
         public void Start()
         {
             var r = GameController.instance.Random;
@@ -57,8 +67,7 @@ namespace DefaultNamespace
                 var y = r.Next(0, 5);
                 var cleanedWord = Regex.Replace(word, "[^A-Za-z0-9äö]", "").ToLowerInvariant();
                 Words.Enqueue(cleanedWord);
-
-                StartCoroutine(QueueWord(wordInterval, cleanedWord, y, j++));
+                StartCoroutine(QueueWord(GetInterval(), GetMoveSpeed(),cleanedWord, y, j++));
             }
 
             UpdateFullJoke();
@@ -82,12 +91,12 @@ namespace DefaultNamespace
             }
         }
 
-        private IEnumerator QueueWord(float speed, string word, int y, int j)
+        private IEnumerator QueueWord(float spawnSpeed, float moveSpeed,  string word, int y, int j)
         {
-            yield return new WaitForSeconds(speed * j);
+            yield return new WaitForSeconds(spawnSpeed * j);
             var wordObj = Instantiate(WordPrefab, new Vector3(5, y * 0.32f), Quaternion.identity);
             wordObj.SetWord(word);
-            wordObj.SetSpeed(wordMoveSpeed);
+            wordObj.SetSpeed(moveSpeed);
             wordObj.targetWord = word;
             WordObjs.Enqueue(wordObj);
         }
@@ -211,6 +220,7 @@ namespace DefaultNamespace
                 var replaceWord = GetAlternativeWord(wordObj);
                 obj._cleanWord = replaceWord;
                 obj.SetWord(replaceWord);
+                obj.SetSpeed(GetMoveSpeed());
                 completedWords.Add(obj);
                 GameController.instance.FailWord();
             }
