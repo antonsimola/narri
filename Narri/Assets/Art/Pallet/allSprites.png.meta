@@ -656,7 +656,7 @@ TextureImporter:
         width: 83
         height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -664,6 +664,90 @@ TextureImporter:
       bones: []
       spriteID: 990bcd687d511ec499047b7a62cb6f79
       internalID: 969836273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n4rri_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 4
+        width: 45
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb275757d8df5946aca603c5ac68e1a
+      internalID: -1260230396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n4rri_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 4
+        width: 45
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f46434459a4c33540b3d7523759fea66
+      internalID: -180936387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n4rri_2
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 4
+        width: 45
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b9e3c51d86251479b7ba5ede7aa76d
+      internalID: 2025093213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n4rri_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 4
+        width: 45
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cedcbee05cc53b4cb751c064d759781
+      internalID: -819299032
       vertices: []
       indices: 
       edges: []
@@ -689,6 +773,10 @@ TextureImporter:
       king_1: -1105094899
       lamp: 1618484506
       light: 969836273
+      n4rri_0: -1260230396
+      n4rri_1: -180936387
+      n4rri_2: 2025093213
+      n4rri_3: -819299032
       note: -434868201
       note_fail: -575885293
       playLine: 1987523576
