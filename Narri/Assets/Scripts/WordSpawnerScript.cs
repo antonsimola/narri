@@ -33,6 +33,8 @@ namespace DefaultNamespace
         private int jokeIndex;
         private bool started;
 
+        private Queue<string> BlablaSounds = new Queue<string>(new string[] { "balala_1", "balala_2", "balala_3" });
+
         void Awake()
         {
             if (instance == null)
@@ -49,7 +51,7 @@ namespace DefaultNamespace
         {
             return wordMoveSpeed + GameController.instance.JokeGameDifficultyMoveSpeed;
         }
-        
+
         public float GetInterval()
         {
             return wordInterval + GameController.instance.JokeGameDifficulty;
@@ -67,7 +69,7 @@ namespace DefaultNamespace
                 var y = r.Next(0, 5);
                 var cleanedWord = Regex.Replace(word, "[^A-Za-z0-9äö]", "").ToLowerInvariant();
                 Words.Enqueue(cleanedWord);
-                StartCoroutine(QueueWord(GetInterval(), GetMoveSpeed(),cleanedWord, y, j++));
+                StartCoroutine(QueueWord(GetInterval(), GetMoveSpeed(), cleanedWord, y, j++));
             }
 
             UpdateFullJoke();
@@ -81,17 +83,19 @@ namespace DefaultNamespace
             {
                 Destroy(failedWord.gameObject);
             }
+
             foreach (var word in completedWords)
             {
                 Destroy(word.gameObject);
             }
+
             foreach (var word in completedWords)
             {
                 Destroy(word.gameObject);
             }
         }
 
-        private IEnumerator QueueWord(float spawnSpeed, float moveSpeed,  string word, int y, int j)
+        private IEnumerator QueueWord(float spawnSpeed, float moveSpeed, string word, int y, int j)
         {
             yield return new WaitForSeconds(spawnSpeed * j);
             var wordObj = Instantiate(WordPrefab, new Vector3(5, y * 0.32f), Quaternion.identity);
@@ -117,6 +121,12 @@ namespace DefaultNamespace
 
             if (Input.anyKeyDown)
             {
+                if (!AudioController.instance.IsPlaying(BlablaSounds.Peek()))
+                {
+                    BlablaSounds.Enqueue(BlablaSounds.Dequeue());
+                    AudioController.instance.Play(BlablaSounds.Peek());
+                }
+
                 KeyCode typedKey = KeyCode.Mouse6;
                 foreach (KeyCode keyCode in keyCodes)
                 {
@@ -232,13 +242,12 @@ namespace DefaultNamespace
             CurrentString = "";
             if (Words.Count != 0)
             {
-                UpdateWord();    
+                UpdateWord();
             }
             else
             {
                 EndMiniGame();
             }
-            
         }
 
         public void OnWordHitWall(WordScript wordObj, GameObject o)
@@ -263,6 +272,7 @@ namespace DefaultNamespace
                 GameController.instance.FailWord();
                 UpdateWord();
             }
+
             UpdateFullJoke();
         }
 
