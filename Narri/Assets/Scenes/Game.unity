@@ -9055,6 +9055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: King
       objectReference: {fileID: 0}
+    - target: {fileID: 4400058303780438521, guid: 4fcb112acc9e08a49a4b726d361d189d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6517046362439029986, guid: 4fcb112acc9e08a49a4b726d361d189d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.747
@@ -9110,7 +9114,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3939679407888892871, guid: bd7fb96331e7f8140bc2da9959b39c05, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6555907538986314637, guid: bd7fb96331e7f8140bc2da9959b39c05, type: 3}
       propertyPath: m_LocalPosition.x

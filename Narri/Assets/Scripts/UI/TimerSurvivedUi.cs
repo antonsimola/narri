@@ -26,7 +26,7 @@ public class TimerSurvivedUi : MonoBehaviour
 
     private void EndTimer()
     {
-        throw new NotImplementedException();
+       
     }
 
     // Update is called once per frame
