@@ -17,12 +17,15 @@ namespace DefaultNamespace
                 {
                     { "mustanaamio", new string[] { "Chuck Norris", "Donald Trump" } },
                     { "meni", new string[] { "ajoi", "lensi", "oksensi" } },
-                    { "nakkikioskille", new string[] { "asd", "asd2", "asd3" } },
+                    { "nakkikioskille", new string[] { "Prismaan", "asd2", "asd3" } },
+                    { "tilasi", new string[] { "varasti", "nyysi", "taikoi" } },
+                    { "lihapiirakan", new string[] { "pihaliirakan", "tietokoneen", "" } },
+                    { "myyjä", new string[] { "varasti", "nyysi", "taikoi" } },
                 },
                 new()
                 {
-                    { "ohjelmoijaa", new string[] { "nörttiä", "" } },
-                    { "ohjelmoida", new string[] { "spagettikoodata" } },
+                    { "ohjelmoijaa", new string[] { "nörttiä" } },
+                    { "ohjelmoida", new string[] { "spagettikoodata", "oksentaa" } },
                     { "peli", new string[] { "bugi" } },
                     { "tunnissa", new string[] { "kuukaudessa", "vuodessa","valovuodessa" } },
                     { "kaksi", new string[] { "2.3", "NULL" } },

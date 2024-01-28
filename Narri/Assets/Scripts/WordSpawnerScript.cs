@@ -216,6 +216,9 @@ namespace DefaultNamespace
 
         private void ValidateCurrent()
         {
+
+            if (WordObjs.Count == 0) return;
+            if (Words.Count == 0) return;
             var word = Words.Dequeue();
             var wordObj = WordObjs.Dequeue();
 
