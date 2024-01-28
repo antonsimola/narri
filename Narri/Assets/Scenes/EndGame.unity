@@ -273,7 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: bg_music
-    clip: {fileID: 8300000, guid: 87ef10ce74a8c0c4fbe23217e0599ffc, type: 3}
+    clip: {fileID: 8300000, guid: 5c5bad628d0a4cf4b8826ecbebe44518, type: 3}
     volume: 0.62
     pitch: 1
     loop: 1
