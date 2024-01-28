@@ -20,13 +20,11 @@ public class GameController : MonoBehaviour
     public Random Random = new Random((int)DateTime.Now.Ticks % 10000000);
 
     public static int YOffset = -3;
-    
+
     // call ->  OnPlayerDamageTaken?.Invoke(newHealt);
     public event Action<int> OnPlayerDamageTaken;
     public event Action onMiniGameEnded;
 
-
-    
 
     public MiniGameEnum MiniGameToStart = MiniGameEnum.Note;
     private GameObject currentMiniGameObj;
@@ -59,24 +57,18 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Exit");
             SceneController.instance.ChangeScene(0);
-        }    
+        }
     }
-    
-    
-    
+
 
     public void StartNewMiniGame()
     {
-
         if (MiniGameToStart == MiniGameEnum.Note)
         {
-
-            currentMiniGameObj =  Instantiate(NoteMiniGame);
-            
+            currentMiniGameObj = Instantiate(NoteMiniGame);
         }
         else if (MiniGameToStart == MiniGameEnum.Joke)
         {
-
             currentMiniGameObj = Instantiate(JokeMiniGame);
         }
     }
@@ -110,10 +102,10 @@ public class GameController : MonoBehaviour
         AudioController.instance.PlayRandomWithPrefix("boo");
         OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
     }
-    
+
     public void FailNote()
     {
-        AudioController.instance.PlayRandomWithPrefix("miss_note");
+        AudioController.instance.PlayRandomWithPrefix("fail");
         //TODO decrement fail counter
         OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
     }
@@ -129,7 +121,7 @@ public class GameController : MonoBehaviour
         {
             MiniGameToStart = MiniGameEnum.Joke;
         }
-       
+
         onMiniGameEnded?.Invoke();
         Debug.Log("End mini game");
     }

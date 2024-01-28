@@ -191,6 +191,198 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: balala_1
+    clip: {fileID: 8300000, guid: 914354883e4ec104d8ebed2821e424eb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: balala_2
+    clip: {fileID: 8300000, guid: b800a49e36e80454da7cadc72e9eb0db, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: balala_3
+    clip: {fileID: 8300000, guid: 2f6e4a3ed7820014c94b91984d2f408b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: bass_1
+    clip: {fileID: 8300000, guid: 3940d346681d97d46989bbb64208f48f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: bass_2
+    clip: {fileID: 8300000, guid: 5d00eb12bd576ce4086369ecbc6ab614, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: boo_1
+    clip: {fileID: 8300000, guid: e95971a6dab9e3b47b02200afd941f4c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: boo_2
+    clip: {fileID: 8300000, guid: 631c5d96d9110b74785cbdc58245903e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: boo_3
+    clip: {fileID: 8300000, guid: 62fa4afd7036d55479f4f184c7f56c44, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: c3
+    clip: {fileID: 8300000, guid: ede2d59e738d746498b1d7a6bcd25fc5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: d3
+    clip: {fileID: 8300000, guid: 67fbc28473008a84fa21708c5cc5ac09, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: e3
+    clip: {fileID: 8300000, guid: 301562724f4db874babfa05115d69793, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: fail_high_1
+    clip: {fileID: 8300000, guid: 2135e99153961b54a9f61d27df0d4510, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: fail_high_3
+    clip: {fileID: 8300000, guid: 7adcc1c2f62cace4aaa3fe80a13ee126, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: fail_high_4
+    clip: {fileID: 8300000, guid: 7be9c030b08d54a4587895e164b47855, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: fail_high_5
+    clip: {fileID: 8300000, guid: aeb3949ca38a8d6478447a8497ac6aad, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: fail_low_1
+    clip: {fileID: 8300000, guid: f5969733382f0e847939e00fb57b357d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: fail_low_2
+    clip: {fileID: 8300000, guid: c922ddd938efbdb40a4fc761ee416b65, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: fail_mid_1
+    clip: {fileID: 8300000, guid: 538567c70d058ef4e936a74f8df30385, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: g3
+    clip: {fileID: 8300000, guid: cf31b276f0a3fe84195e02bb8c576a99, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: hihat_1
+    clip: {fileID: 8300000, guid: 0a98331a44757184e8559e781c8b0761, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: laugh_1
+    clip: {fileID: 8300000, guid: 88bf21ee070033741b43faed1bce12eb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: laugh_3
+    clip: {fileID: 8300000, guid: 93b3b8df27eb59b48b9f0f89690b7251, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: laugh_2
+    clip: {fileID: 8300000, guid: 6fce1e27f2d299643a8bc485621d3096, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: laugh_4
+    clip: {fileID: 8300000, guid: a6d34b413f22be24386775057e934e33, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: make_me_laugh
+    clip: {fileID: 8300000, guid: 4de1834e28c2d784ab6ea53d43bf9271, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: make_me_laugh_2
+    clip: {fileID: 8300000, guid: 2e1d9e335992eea4793d0aaad9145cae, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: music_with_baseline
+    clip: {fileID: 8300000, guid: 5c5bad628d0a4cf4b8826ecbebe44518, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: snare_1
+    clip: {fileID: 8300000, guid: 91292f4840d37f044913b4dc1f3c0f2c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: wahwahwaa_1
+    clip: {fileID: 8300000, guid: 04574c3bd7318c64eb512b5f188497da, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: wahwahwaa_2
+    clip: {fileID: 8300000, guid: ba83696025d21784ea7b44621c590f4d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: walk_1
+    clip: {fileID: 8300000, guid: 59e7356ee8f3288499abef660bb3d864, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: walk_2
+    clip: {fileID: 8300000, guid: b85fba2530bf1964bb03adf7a9719d7f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &101527073
 Transform:
   m_ObjectHideFlags: 0
@@ -234,12 +426,6 @@ MonoBehaviour:
   damageOnFail: 10
   NoteMiniGame: {fileID: 4032589273398894204, guid: ede4f7ac3bf417f41a6e0f879d2cf516, type: 3}
   JokeMiniGame: {fileID: 4396584419294669791, guid: 19e840775d13e9e4597ef1b434db505f, type: 3}
-  PlayLineSegments:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   MiniGameToStart: 1
 --- !u!1 &259520910
 GameObject:
