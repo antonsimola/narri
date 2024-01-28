@@ -70,7 +70,6 @@ public class PlayLineControlScript : MonoBehaviour
                 var segment = PlayLineSegments[kv.Key];
                 if (!segment.IsColliding)
                 {
-                    AudioController.instance.Play("boo_short_1");
                     FailNote();
                     return;
                 }
@@ -85,7 +84,6 @@ public class PlayLineControlScript : MonoBehaviour
                     else
                     {
                         failedNotes.Add(segment.CollidingNote.gameObject);
-                        AudioController.instance.Play("boo_short_1");
                         FailNote();
                     }
                 }
@@ -108,6 +106,8 @@ public class PlayLineControlScript : MonoBehaviour
 
     public void FailNote()
     {
+        
+        //TODO proper sound effect for failed note
         GameController.instance.FailNote();
     }
 
@@ -127,7 +127,7 @@ public class PlayLineControlScript : MonoBehaviour
 
         Debug.Log("Missed note");
         other.gameObject.GetComponent<SpriteRenderer>().sprite = failNote;
-        AudioController.instance.Play("boo_short_1");
-        GameController.instance.FailNote();
+
+
     }
 }

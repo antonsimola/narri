@@ -100,11 +100,13 @@ public class GameController : MonoBehaviour
 
     public void FailWord()
     {
+        AudioController.instance.PlayRandomWithPrefix("boo");
         OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
     }
     
     public void FailNote()
     {
+        AudioController.instance.PlayRandomWithPrefix("miss_note");
         //TODO decrement fail counter
         OnPlayerDamageTaken?.Invoke(RedusePlayerHealth(damageOnFail));
     }

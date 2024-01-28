@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DefaultNamespace.Utility;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -58,6 +60,16 @@ public class AudioController : MonoBehaviour
     public void Play(string name)
     {
         Sound sound = Array.Find(sounds, sound => sound.name == name);
+        if (sound == null)
+        {
+            return;
+        }
+        sound.source.Play();
+    }
+
+    public void PlayRandomWithPrefix(string prefix)
+    {
+        Sound sound = sounds.Where(sound => sound.name.StartsWith(prefix)).ToList().GetRandomFromList();
         if (sound == null)
         {
             return;

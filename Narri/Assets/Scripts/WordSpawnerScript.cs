@@ -112,6 +112,7 @@ namespace DefaultNamespace
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
+                        Debug.Log(keyCode);
                         if (keyCode == KeyCode.Semicolon)
                         {
                             CurrentString += "ö";
@@ -211,7 +212,6 @@ namespace DefaultNamespace
                 obj._cleanWord = replaceWord;
                 obj.SetWord(replaceWord);
                 completedWords.Add(obj);
-
                 GameController.instance.FailWord();
             }
             else
@@ -247,6 +247,8 @@ namespace DefaultNamespace
                 //User has not finished the word yet
                 Words.TryDequeue(out var _);
                 WordObjs.TryDequeue(out var _);
+                CurrentString = "";
+                GameController.instance.FailWord();
                 UpdateWord();
             }
 
