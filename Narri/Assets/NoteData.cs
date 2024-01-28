@@ -14,5 +14,6 @@ namespace DefaultNamespace
     {
         public float Tempo { get; set; }
         public IList<NoteData> Notes { get; set; } = new List<NoteData>();
+        public string Name { get; set; }
     }
 }

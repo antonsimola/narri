@@ -35,6 +35,9 @@ public class GameController : MonoBehaviour
     public float JokeGameDifficulty = 0;
     public float JokeGameDifficultyMoveSpeed = 0;
     private bool firstMinigame = true;
+    [SerializeField] public int SongIndex = 0;
+    private bool firstTimeNote = true;
+    private bool firstTimeJoke = true;
 
     void Awake()
     {
@@ -54,6 +57,15 @@ public class GameController : MonoBehaviour
         Random rand = new Random();
         int randNum = rand.Next(2);
         MiniGameToStart = (MiniGameEnum)randNum;
+        if (MiniGameToStart == MiniGameEnum.Joke)
+        {
+            firstTimeJoke = false;
+        }
+
+        if (MiniGameToStart == MiniGameEnum.Note)
+        {
+            firstTimeNote = false;
+        }
     }
 
     // Update is called once per frame
@@ -125,17 +137,35 @@ public class GameController : MonoBehaviour
 
     public void EndMiniGame()
     {
+        Debug.Log("EndMiniGame");
+        
         AudioController.instance.PlayRandomWithPrefix("laugh");
         Destroy(currentMiniGameObj);
         if (MiniGameToStart == MiniGameEnum.Joke)
         {
-            NoteGameDifficulty -= 10;
+            if (firstTimeNote)
+            {
+                firstTimeNote = false;
+            }
+            else
+            {
+                NoteGameDifficulty -= 10;
+                SongIndex++;    
+            }
             MiniGameToStart = MiniGameEnum.Note;
         }
         else if (MiniGameToStart == MiniGameEnum.Note)
         {
-            JokeGameDifficulty -= 0.5f; 
-            JokeGameDifficultyMoveSpeed += 0.5f; 
+            if (firstTimeJoke)
+            {
+                firstTimeJoke = false;
+            }
+            else
+            {
+                JokeGameDifficulty -= 0.5f; 
+                JokeGameDifficultyMoveSpeed += 0.5f;    
+            }
+             
             MiniGameToStart = MiniGameEnum.Joke;
         }
 
