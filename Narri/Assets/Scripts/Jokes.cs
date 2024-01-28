@@ -17,9 +17,9 @@ namespace DefaultNamespace
                 {
                     { "mustanaamio", new string[] { "Chuck Norris", "Donald Trump" } },
                     { "meni", new string[] { "ajoi", "lensi", "oksensi" } },
-                    { "nakkikioskille", new string[] { "Prismaan", "asd2", "asd3" } },
+                    { "nakkikioskille", new string[] { "Prismaan", "Lontooseen", "saunaan" } },
                     { "tilasi", new string[] { "varasti", "nyysi", "taikoi" } },
-                    { "lihapiirakan", new string[] { "pihaliirakan", "tietokoneen", "" } },
+                    { "lihapiirakan", new string[] { "pihaliirakan", "tietokoneen" } },
                     { "myyjä", new string[] { "varasti", "nyysi", "taikoi" } },
                 },
                 new()
