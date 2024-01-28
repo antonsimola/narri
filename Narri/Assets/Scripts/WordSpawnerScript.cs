@@ -14,8 +14,8 @@ namespace DefaultNamespace
 {
     public class WordSpawnerScript : MonoBehaviour
     {
-        [SerializeField] public float wordInterval = 1.5f;
-        [SerializeField] public float wordMoveSpeed = 1f;
+        [SerializeField] public float wordInterval = 2.0f;
+        [SerializeField] public float wordMoveSpeed = 0.5f;
 
         public WordScript WordPrefab;
         public TMP_Text CompleteJoke;

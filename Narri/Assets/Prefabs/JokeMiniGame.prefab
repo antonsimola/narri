@@ -410,8 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04ea26af9264f2986f05b867a547f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordInterval: 1.5
-  wordMoveSpeed: 1
+  wordInterval: 2
+  wordMoveSpeed: 0.5
   WordPrefab: {fileID: 2805765977322611209, guid: 2d629f84693e33547bb4b846b50b3041, type: 3}
   CompleteJoke: {fileID: 6570550164918635887}
 --- !u!1 &4396584419294669791
