@@ -7,7 +7,9 @@ namespace DefaultNamespace
         public static List<string> JokeList = new List<string>()
         {
             "Mustanaamio meni nakkikioskille ja tilasi lihapiirakan. Myyjä kysyi, tuleeko kaikki mausteet? Mustanaamio vastaa: Ei.",
-            "Montako ohjelmoijaa vaatii tekemään pelin 48 tunnissa? Ainakin yli kaksi!"
+            "Montako ohjelmoijaa vaatii tekemään pelin 48 tunnissa? Ainakin yli kaksi!",
+            "Why astronauts are using Linux systems, because they cant open windows",
+            "Why do java programmers use glasses, because they cant see sharp"
         };
 
         public static IList<Dictionary<string, string[]>> WordFailAlternatives { get; set; } =
@@ -29,6 +31,17 @@ namespace DefaultNamespace
                     { "peli", new string[] { "bugi" } },
                     { "tunnissa", new string[] { "kuukaudessa", "vuodessa","valovuodessa" } },
                     { "kaksi", new string[] { "2.3", "NULL" } },
+                },
+                new()
+                {
+                    { "astronauts", new string[] { "cosmonauts", "divers" } },
+                    { "Linux", new string[] { "javascript" } },
+                    { "windows", new string[] { "windows without tek support" } },
+                },
+                 new()
+                {
+                    { "java", new string[] { "javascript", "assembly" } },
+                   
                 }
             };
     }
