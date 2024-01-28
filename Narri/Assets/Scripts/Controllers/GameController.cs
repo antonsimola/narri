@@ -68,6 +68,13 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Exit");
+            SceneController.instance.ChangeScene(0);
+        }
+
         currentlyPressing = null;
         if (PlayLineSegments[0] == null) return;
 
@@ -116,11 +123,7 @@ public class GameController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Exit");
-            SceneController.instance.ChangeScene(0);
-        }
+        
     }
 
     public void FailNote()
