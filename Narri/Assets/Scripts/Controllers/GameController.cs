@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Exit");
+            ScoreController.instance.RemoveFromFirst();
             SceneController.instance.ChangeScene(0);
         }
     }

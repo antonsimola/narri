@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 101527072}
   - component: {fileID: 101527074}
   - component: {fileID: 101527075}
+  - component: {fileID: 101527076}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -430,6 +431,19 @@ MonoBehaviour:
   NoteGameDifficulty: 0
   JokeGameDifficulty: 0
   JokeGameDifficultyMoveSpeed: 0
+--- !u!114 &101527076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101527071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f850e65ef4eec479fc391b9f59aa41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scores: {fileID: 11400000, guid: 455c5beb272b2e4428b136e42c905bad, type: 2}
 --- !u!1 &259520910
 GameObject:
   m_ObjectHideFlags: 0

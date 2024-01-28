@@ -26,7 +26,8 @@ public class TimerSurvivedUi : MonoBehaviour
 
     private void EndTimer()
     {
-       
+        int survived = (int)(Time.time - started);
+        ScoreController.instance.AddTimeToScore(0, survived);
     }
 
     // Update is called once per frame
