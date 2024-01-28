@@ -127,6 +127,8 @@ public class PlayLineControlScript : MonoBehaviour
 
         Debug.Log("Missed note");
         other.gameObject.GetComponent<SpriteRenderer>().sprite = failNote;
+        
+        GameController.instance.FailNote();
 
 
     }
