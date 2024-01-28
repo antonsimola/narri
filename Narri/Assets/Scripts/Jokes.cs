@@ -9,7 +9,8 @@ namespace DefaultNamespace
             "Mustanaamio meni nakkikioskille ja tilasi lihapiirakan. Myyjä kysyi, tuleeko kaikki mausteet? Mustanaamio vastaa: Ei.",
             "Montako ohjelmoijaa vaatii tekemään pelin 48 tunnissa? Ainakin yli kaksi!",
             "Why astronauts are using Linux systems, because they cant open windows",
-            "Why do java programmers use glasses, because they cant see sharp"
+            "Why do java programmers use glasses, because they cant see sharp",
+            "Miksi sukeltajat kaatuvat takaperin veneestä? Jos ne kaatuisi etuperin, niin ne olisi vielä veneessä"
         };
 
         public static IList<Dictionary<string, string[]>> WordFailAlternatives { get; set; } =
@@ -41,7 +42,13 @@ namespace DefaultNamespace
                  new()
                 {
                     { "java", new string[] { "javascript", "assembly" } },
-                   
+                },
+                new()
+                {
+                    { "sukeltajat", new string[] { "kalastajat", "kalat", } },
+                    { "kaatuvat", new string[] { "hyppäävät", "liukuvat", } },
+                    { "veneestä", new string[] { "lentokoneesta", "autosta","junasta" } },
+                    { "veneessä", new string[] { "lentokoneessa", "autossa","junassa" } },
                 }
             };
     }
