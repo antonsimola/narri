@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     // call ->  OnPlayerDamageTaken?.Invoke(newHealt);
     public event Action<int> OnPlayerDamageTaken;
     public event Action onMiniGameEnded;
+    public event Action onGameStarted;
+    public event Action onGameEnded;
 
 
     public MiniGameEnum MiniGameToStart = MiniGameEnum.Note;
@@ -32,7 +34,7 @@ public class GameController : MonoBehaviour
     public float NoteGameDifficulty = 0;
     public float JokeGameDifficulty = 0;
     public float JokeGameDifficultyMoveSpeed = 0;
-
+    private bool firstMinigame = true;
 
     void Awake()
     {
@@ -67,6 +69,13 @@ public class GameController : MonoBehaviour
 
     public void StartNewMiniGame()
     {
+
+        if (firstMinigame)
+        {
+            onGameStarted?.Invoke();
+            firstMinigame  = false;
+        }
+
         if (MiniGameToStart == MiniGameEnum.Note)
         {
             currentMiniGameObj = Instantiate(NoteMiniGame);
@@ -97,7 +106,7 @@ public class GameController : MonoBehaviour
 
     private void Die()
     {
-        //if u need do something on dead
+        onGameEnded?.Invoke();
         SceneController.instance.ChangeScene(2);
     }
 
